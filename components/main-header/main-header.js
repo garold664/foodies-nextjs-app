@@ -21,7 +21,7 @@ export default function MainHeader() {
               <Link href="/meals">Browse Meals</Link>
             </li>
             <li>
-              <Link href="/meals/community">Foodies Community</Link>
+              <Link href="/community">Foodies Community</Link>
             </li>
           </ul>
         </nav>
