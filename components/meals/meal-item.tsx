@@ -2,8 +2,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import styles from './meal-item.module.css';
+import { Meal } from './meals-grid';
 
-export default function MealItem({ title, slug, image, summary, creator }) {
+export default function MealItem({
+  title,
+  slug,
+  image,
+  summary,
+  creator,
+}: Meal) {
   return (
     <article className={styles.meal}>
       <header>
