@@ -3,6 +3,7 @@ import { getMeal } from '@/lib/meals';
 
 import styles from './page.module.css';
 import { Meal } from '@/components/meals/meals-grid';
+import { notFound } from 'next/navigation';
 
 export default function MealDetailsPage({
   params,
@@ -10,6 +11,10 @@ export default function MealDetailsPage({
   params: { mealSlug: string };
 }) {
   const meal = getMeal(params.mealSlug);
+
+  if (!meal) {
+    notFound();
+  }
 
   meal.instructions = meal.instructions.replace(/\n/g, '<br />');
   return (
