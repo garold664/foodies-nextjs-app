@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { getMeal } from '@/lib/meals';
 
 import styles from './page.module.css';
-import { Meal } from '@/components/meals/meals-grid';
 import { notFound } from 'next/navigation';
 
 export default function MealDetailsPage({
@@ -21,7 +20,7 @@ export default function MealDetailsPage({
     <>
       <header className={styles.header}>
         <div className={styles.image}>
-          <Image src={meal.image} alt={meal.title} fill />
+          <Image src={meal.image as string} alt={meal.title} fill />
         </div>
         <div className={styles.headerText}>
           <h1>{meal.title}</h1>

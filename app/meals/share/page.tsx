@@ -1,7 +1,5 @@
 'use client';
 
-import { Meal } from '@/lib/meals';
-
 import ImagePicker from '../image-picker';
 import styles from './page.module.css';
 import { shareMeal } from '@/lib/actions';
@@ -59,11 +57,3 @@ export default function ShareMealPage() {
     </>
   );
 }
-
-// The error you're seeing is related to the useActionState hook from the react library. This hook is used to manage state in a form, and it expects two arguments: an action function and an initial state.
-
-// The error message is telling us that the action function you're passing to useActionState does not match the expected signature. The action function should take the current state and a payload (in this case, FormData), and return a new state or a promise that resolves to a new state.
-
-// The shareMeal function you're passing to useActionState is defined as (prevState: { message: string | null }, formData: FormData) => Promise<{ message: string }>, which is not compatible with the expected signature.
-
-// The expected action function should be (prevState: { message: string }) => { message: string } | Promise<{ message: string }>. Notice that the expected function takes only one argument (prevState), whereas the shareMeal function takes two arguments (prevState and formData).

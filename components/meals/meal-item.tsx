@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import styles from './meal-item.module.css';
-import { Meal } from './meals-grid';
+import { Meal } from '@/lib/meals';
 
 export default function MealItem({
   title,
@@ -15,7 +15,7 @@ export default function MealItem({
     <article className={styles.meal}>
       <header>
         <div className={styles.image}>
-          <Image src={image} alt={title} fill />
+          <Image src={image as string} alt={title} fill />
         </div>
         <div className={styles.headerText}>
           <h2>{title}</h2>
