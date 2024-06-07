@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import sql from 'better-sqlite3';
 import slugify from 'slugify';
 import xss from 'xss';
+import { uploadImage } from './cloudinary';
 const db = sql('meals.db');
 
 export type Meal = {
@@ -31,20 +32,23 @@ export async function saveMeal(meal: Omit<Meal, 'id'>) {
 
   meal.instructions = xss(meal.instructions);
 
-  const extension = (meal.image as File).name.split('.').pop();
-  const fileName = `${meal.slug}${Date.now().toString()}.${extension}`;
+  // const extension = (meal.image as File).name.split('.').pop();
+  // const fileName = `${meal.slug}${Date.now().toString()}.${extension}`;
 
-  const stream = fs.createWriteStream(`public/images/${fileName}`);
+  // const stream = fs.createWriteStream(`public/images/${fileName}`);
 
-  const bufferedImage = await (meal.image as File).arrayBuffer();
+  // const bufferedImage = await (meal.image as File).arrayBuffer();
 
-  stream.write(Buffer.from(bufferedImage), (error: any) => {
-    if (error) {
-      throw new Error(error);
-    }
-  });
+  // stream.write(Buffer.from(bufferedImage), (error: any) => {
+  //   if (error) {
+  //     throw new Error(error);
+  //   }
+  // });
 
-  meal.image = `/images/${fileName}`;
+  // meal.image = `/images/${fileName}`;
+
+  meal.image = await uploadImage(meal.image as File);
+  console.log(meal.image);
 
   db.prepare(
     `

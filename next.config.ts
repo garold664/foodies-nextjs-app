@@ -1,4 +1,17 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
+import { hostname } from 'os';
 
-module.exports = nextConfig
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        port: '',
+        pathname: '/dudevjtfp/image/upload/**',
+        hostname: 'res.cloudinary.com',
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
